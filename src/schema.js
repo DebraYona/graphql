@@ -7,9 +7,27 @@ const typeDefs = `
 
     type Query {
         hello: String,
-        greet : Int ,
+        greet(name: String) : String,
+        Tasks: [Task]
     }
- 
+
+    type Task {
+        _id: ID
+        title: String!
+        description: String!
+        number: Int
+    }
+    
+    type Mutation{
+        createTask(input: TaskInput): Task
+        
+    }
+
+    input TaskInput{
+        title: String!
+        description: String
+        number : Int
+    }
 `;
 
 export default makeExecutableSchema({
